@@ -1,2 +1,2 @@
 # Travel_Blog
-A web-app to post your travel diaries made using MERN
+A MERN application to post your travel diaries
