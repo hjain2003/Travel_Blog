@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from 'mongoose';
 import dotenv from "dotenv";
-import connectDB from "./db/conn.js";
+import {connectDB} from "./db/conn.js";
 import userRouter from "./routing/user_routes.js";
 
 const app=express();
