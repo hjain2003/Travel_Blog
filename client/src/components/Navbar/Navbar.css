@@ -1,0 +1,29 @@
+.nav{
+    height:70px;
+    width:100%;
+    background-color:aquamarine;
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    border-bottom: 2px solid green;
+}
+.nav_items{
+    display: flex;
+    float : left;
+    height: 70px;
+    margin-left: 40px;
+    align-items: center;
+    justify-content: center;
+}
+.nav_items ul{
+    line-height: 70px;
+}
+.nav_items ul li{
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px;
+    line-height: 70px;
+    color: green;
+    font-size: 18px;
+}

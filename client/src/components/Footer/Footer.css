@@ -1,0 +1,15 @@
+*{
+    margin:0px;
+    padding: 0px;
+}
+
+.footer{
+    height:70px;
+    background-color: aquamarine;
+    position: absolute;
+    width: 100%;
+    bottom:0;
+    right:0;
+    left:0;
+    border-top: 2px solid green;
+}
