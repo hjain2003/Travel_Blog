@@ -13,7 +13,10 @@ const Home = () => {
                 <div className="home_content">
                     <h1 align="center">Travel Blog</h1>
                     <br />
-                    <button className='add_diary_btn'>Add a Post</button>
+                    <div className="row_it">
+                    <button className='add_diary_btn'>Add a Post</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button className='add_diary_btn'>View diaries</button>
+                    </div>
                 </div>
                 <div className="grass">
                     <img src={grass} alt="" />
