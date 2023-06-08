@@ -3,7 +3,6 @@ import Footer from '../Footer/Footer'
 import './Home.css';
 import Navbar from '../Navbar/Navbar';
 import grass from '../Assets/grass_color.jpg'
-import cloud from '../Assets/cloud.jpg'
 
 const Home = () => {
     return (

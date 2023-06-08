@@ -1,7 +1,8 @@
 body{
-    background-color: rgb(116, 245, 245);
-    background-image: linear-gradient(to right bottom, #7fffd4, #77fdde, #73fbe7, #72f8ef, #74f5f5);
-    background-image: radial-gradient(circle, #7fffd4, #77fdde, #73fbe7, #18f6e7, #74f5f5);
+    /* background-color: rgb(116, 245, 245); */
+    /* background-image: linear-gradient(to right bottom, #7fffd4, #77fdde, #73fbe7, #72f8ef, #74f5f5); */
+    /* background-image: radial-gradient(circle, #7fffd4, #77fdde, #73fbe7, #18f6e7, #74f5f5); */
+    background-color:rgb(131, 255, 255);
 }
 
 .home_container{
@@ -51,5 +52,5 @@ body{
     height:100px;
 }
 .last_grass{
-    margin-left: -190px;
+    margin-left: -170px;
 }
