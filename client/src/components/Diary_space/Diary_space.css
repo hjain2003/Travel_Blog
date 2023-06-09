@@ -1,0 +1,20 @@
+.row{
+    /* border:2px solid black; */
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
+    gap: 90px; /* Adjust the gap between grid items as needed */
+  }
+  
+  .grid-item {
+    background-color: #f0f0f0;
+    padding: 10px;
+    text-align: center;
+  }
+  

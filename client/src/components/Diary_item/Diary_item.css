@@ -1,5 +1,5 @@
 .diary_card{
-    height:330px;
+    height:360px;
     width: 300px;
     /* border:2px solid black; */
     border-radius: 7px;
@@ -36,7 +36,7 @@
     align-items: center;
     margin: auto;
     background-color: aquamarine;
-    height: 270px;
+    height: 275px;
     width: 290px;
     z-index: 10000;
     /* border: 2px solid black; */
@@ -53,4 +53,17 @@
 .text_container{
     padding: 5px;
     font-size: 12px;
+}
+.button_container_card{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.edit_Delete{
+    width: 100px;
+    border: none;
+    background-color: blueviolet;
+    padding: 7px;
+    border-radius: 4px;
+    cursor: pointer;
 }
