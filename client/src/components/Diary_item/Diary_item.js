@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import './Diary_item.css';
+import { NavLink } from 'react-router-dom';
 
 const Diary_item = (props) => {
     const { userId, loggedInUserId , postId} = props;
@@ -51,7 +52,7 @@ const Diary_item = (props) => {
                 <div className="button_container_card">
                 {userId === loggedInUserId && (
             <>
-              <button className="edit_Delete">Edit</button>
+              <button className="edit_Delete"><NavLink to={`/editPost/${props.postId}`}>Edit</NavLink></button>
               <button className="edit_Delete" onClick={handleDelete}>Delete</button>
             </>
           )}

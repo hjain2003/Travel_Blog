@@ -91,14 +91,14 @@ export const getPostById = async (req, res) => {
 export const updatePost = async(req,res)=>{
     const id = req.params.id;
     const { title, description, image, location, date} = req.body;
-    if (!title || !description || !image || !location || !date) {
+    if (!title || !description || !image || !location) {
         res.status(422).json({ error: "fields empty" });
     }
 
     
     try {
         const post = await Post.findByIdAndUpdate(id, {
-            title, description, image, location, date : new Date(`${date}`)
+            title, description, image, location, date : new Date(date)
         });
         //no need to call save...save already called
 
