@@ -9,6 +9,7 @@ const Diary_space = ({isLoggedIn}) => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [posts, setPosts] = useState([]);
+  const loggedInUserId = localStorage.getItem("userId"); // Retrieve the logged-in user ID from localStorage
 
   const callDiariesPage = async () => {
     try {
@@ -52,9 +53,12 @@ const Diary_space = ({isLoggedIn}) => {
             {posts.map((item, index) => (
               <Diary_item
                 key={item._id}
+                postId = {item._id}  //key not passed as prop anywhere so made a separate postid
                 title={item.title}
                 location={item.location}
                 description={item.description}
+                userId={item.user} // Pass the user ID of the post creator as a prop
+                loggedInUserId={loggedInUserId} // Pass the logged in user ID as a prop
               />
             ))}
           </div>

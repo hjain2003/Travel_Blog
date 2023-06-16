@@ -26,36 +26,33 @@ export const getAllUsers = async (req, res) => {
 
 //registration
 export const signup = async (req, res) => {
-
-    // console.log(req.body);
     const { name, email, password } = req.body;
-
+  
     if (!name || !email || !password) {
-        res.status(422).json({ error: "empty fields !" });
+      return res.status(422).json({ error: "empty fields!" });
     }
-
+  
     try {
-        const userExists = await User.findOne({ email: email });
-        if (userExists) {
-            return res.status(422).json({ error: "Email already exists !" });
-        }
-
-        //hashing
-        const hashedPassword = pkg.hashSync(password);
-
-        const user = new User({ name, email, password : hashedPassword});
-        const userRegister = await user.save();
-
-        if (userRegister) {
-            res.status(201).json({ message: "user registered successfully !" });
-        }
-        else {
-            res.status(422).json({ error: "Registration failed" });
-        }
+      const userExists = await User.findOne({ email: email });
+      if (userExists) {
+        return res.status(422).json({ error: "Email already exists!" });
+      }
+  
+      const hashedPassword = pkg.hashSync(password);
+  
+      const user = new User({ name, email, password: hashedPassword });
+      const userRegister = await user.save();
+  
+      if (userRegister) {
+        res.status(201).json({ message: "user registered successfully!" });
+      } else {
+        res.status(422).json({ error: "Registration failed" });
+      }
     } catch (err) {
-        console.log(err);
+      console.log(err);
     }
-}
+  };
+  
 
 //login
 export const login = async(req, res)=>{
@@ -81,7 +78,7 @@ export const login = async(req, res)=>{
                     httpOnly:true
                 });
                 res.cookie("test",'val');
-                res.status(201).json({message: "user successfully logged in!"});
+                res.status(201).json({message: "user successfully logged in!", userId : userLogin._id});
             }
             else{
                 res.status(400).json({message:"pwd incorrect!"});

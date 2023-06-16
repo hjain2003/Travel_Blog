@@ -9,9 +9,12 @@ import { useEffect, useState } from 'react';
 import Addpost from './components/AddPost/Addpost';
 
 
+
 function App() {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
+
 
   useEffect(() => {
     if (!isLoggedIn) {
@@ -21,14 +24,16 @@ function App() {
 
   return (
     <>
+   
       <Routes>
         <Route path='/' element={<Home isLoggedIn={isLoggedIn}/>} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login setIsLoggedIn={setIsLoggedIn} />} />
         <Route path='/diaries' element={<Diary_space isLoggedIn={isLoggedIn} />} />
-        <Route path='/logout' element={<Logout setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path='/logout' element={<Logout setIsLoggedIn={setIsLoggedIn}/>} />
         <Route path='/addpost' element={<Addpost/>}/>
       </Routes>
+
     </>
   );
 }

@@ -1,28 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import './Login.css';
 import Navbar from '../Navbar/Navbar';
-import { NavLink } from 'react-router-dom';
-// import axios from 'axios';
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from 'react-router-dom';
 
-
-const Login = ({setIsLoggedIn}) => {
+const Login = ({ setIsLoggedIn }) => {
   const navigate = useNavigate();
-  // const [isLoggedIn,setIsLoggedIn] = useState(false);
-
-  const [user, setuser] = useState({
+  const [user, setUser] = useState({
     email: "",
     password: ""
   });
 
-
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setuser((prevState) => ({
+    setUser((prevState) => ({
       ...prevState,
       [name]: value
     }));
-  }
+  };
 
   const loginUser = async (e) => {
     e.preventDefault();
@@ -53,28 +47,32 @@ const Login = ({setIsLoggedIn}) => {
       console.log("Login successful");
       navigate('/');
       setIsLoggedIn(true);
+      // localStorage.setItem("userId", data._id); // Save the user ID in local storage
+      console.log(data._id);
+      localStorage.setItem("userId", data.userId);
       console.log(res.status);
       console.log(data);
     }
-  }
+  };
+
   return (
     <>
-    <Navbar/>
-    <div className="register_box">
-        <form action="">
-            <h1 align="center">Login</h1>
-            <br /><br />
-            <span>Email: <input type="email" name="email" placeholder='Enter Email' onChange={handleChange}/></span>
-            <br /><br />
-            <span>Password: <input type="password" name="password" placeholder='Enter password' onChange={handleChange}/></span>
-            <br /><br />
-            <input type="submit" name="submit" id="submit" onClick={loginUser} />
+      <Navbar />
+      <div className="register_box">
+        <form>
+          <h1 align="center">Login</h1>
+          <br /><br />
+          <span>Email: <input type="email" name="email" placeholder='Enter Email' onChange={handleChange} /></span>
+          <br /><br />
+          <span>Password: <input type="password" name="password" placeholder='Enter password' onChange={handleChange} /></span>
+          <br /><br />
+          <input type="submit" name="submit" id="submit" onClick={loginUser} />
         </form>
         <br /><br />
-        Don't have an account ? <NavLink to='/register'>Register</NavLink>
-    </div>
-    </>    
-  )
-}
+        Don't have an account? <NavLink to='/register'>Register</NavLink>
+      </div>
+    </>
+  );
+};
 
-export default Login
+export default Login;
