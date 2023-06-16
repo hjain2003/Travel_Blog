@@ -20,7 +20,7 @@ const postSchema = new mongoose.Schema({
     },
     date :{
         type : Date,
-        required : true
+        // required : true
     },
     user :{
         type : mongoose.Types.ObjectId,

@@ -2,7 +2,7 @@ import React from 'react'
 import './Navbar.css';
 import { NavLink } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({isLoggedIn}) => {
   return (
     <div className='nav'>
       <div className="nav_items">
@@ -12,6 +12,7 @@ const Navbar = () => {
             <li><NavLink to='/login'>Auth</NavLink></li>
         </ul>
       </div>
+      {isLoggedIn && <NavLink to='/logout' id="logout">Logout</NavLink>}
     </div>
   )
 }

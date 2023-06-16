@@ -3,39 +3,62 @@ import Diary_item from '../Diary_item/Diary_item.js';
 import Navbar from '../Navbar/Navbar.js';
 import './Diary_space.css';
 import { getAllPosts } from '../../api-helpers/helpers.js';
+import { NavLink, useNavigate } from "react-router-dom";
 
+const Diary_space = ({isLoggedIn}) => {
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
+  const [posts, setPosts] = useState([]);
 
-const Diary_space = (props) => {
-
-  const[isloading, setisloading] = useState(true);
-  const [posts,setPosts] = useState();
-  useEffect(()=>{
-    getAllPosts().then(
-      (data)=>{
-        setPosts(data?.posts);
-        setisloading(false);
-      }
-      ).catch((err)=>{
-        console.log(err);
+  const callDiariesPage = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/post", {
+        method: "GET",
+        headers: {
+          Accept : "application/json",
+          "Content-Type" : "application/json"
+        },
+        credentials : 'include'
       });
 
-      // console.log(posts[0].date);
+      const data = await res.json();
+      console.log(data);
+      setIsLoading(false);
+      
+      if(!res.status ===200){
+        const error = new Error(res.error);
+        throw error;
+      }
+      setPosts(data.posts);
+    } catch (err) {
+      console.log(err);
+      navigate('/login');
+    }
+  }
+  useEffect(() => {
+    callDiariesPage();
   },[]);
 
-  // setPosts(data);
+  console.log(posts);
+
   return (
     <>
       <Navbar />
       <br /><br /><br /><br /><br />
-      <div className="row"> {/* Apply the row class here */}
-      {isloading && <span><h1>Loading....</h1></span>};
-        <div className="grid-container"> {/* Apply the grid-container class here */}
-          {posts && posts.map((item,index) => (
-            // <div key={item} className="grid-item"> {/* Add a unique key and apply the grid-item class */}
-              <Diary_item key={item} title= {item.title} location = {item.location} description = {item.description}  />
-            // </div>
-          ))}
-        </div>
+      <button id="add_post"><NavLink to='/addpost'>Add a post</NavLink></button>
+      <div className="row">
+        {isLoading ? <h1>Loading....</h1> :
+          <div className="grid-container">
+            {posts.map((item, index) => (
+              <Diary_item
+                key={item._id}
+                title={item.title}
+                location={item.location}
+                description={item.description}
+              />
+            ))}
+          </div>
+        }
       </div>
     </>
   );

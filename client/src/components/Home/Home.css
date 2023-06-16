@@ -15,7 +15,7 @@ body{
 
 }
 .home_container h1{
-    margin-top: -50px;
+    /* margin-top: -50px; */
     /* border:2px solid black; */
     width: 300px;
     font-size: 50px;
@@ -28,6 +28,11 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: -150px;
+}
+.home_content span{
+    display: inline-block;
+    font-size: 20px;
 }
 .add_diary_btn{
     padding: 10px;
@@ -52,5 +57,5 @@ body{
     height:100px;
 }
 .last_grass{
-    margin-left: -170px;
+    margin-left: -5px;
 }

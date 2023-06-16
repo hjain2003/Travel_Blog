@@ -33,3 +33,15 @@
     text-decoration: none;
     color:rgb(0, 5, 101); ;
 }
+
+#logout{
+    text-decoration: none;
+    color:rgb(0, 5, 101); 
+    font-weight: bold;
+    line-height: 70px;
+    position: absolute;
+    right:30px;
+    font-size: 18px;
+    background-color: aqua;
+    display: inline;
+}

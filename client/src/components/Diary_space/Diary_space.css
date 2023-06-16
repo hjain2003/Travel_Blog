@@ -17,4 +17,19 @@
     padding: 10px;
     text-align: center;
   }
-  
+
+  #add_post{
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    position: absolute;
+    right: 30px;
+    cursor: pointer;
+  }
+  #add_post a{
+    text-decoration: none;
+    color: white;
+  }

@@ -2,24 +2,14 @@ import React, { useState } from 'react'
 import './Login.css';
 import Navbar from '../Navbar/Navbar';
 import { NavLink } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 
-const Login = () => {
+const Login = ({setIsLoggedIn}) => {
+  const navigate = useNavigate();
+  // const [isLoggedIn,setIsLoggedIn] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // console.log(user);
-
-    try {
-      const response = await axios.post('http://localhost:5000/user/login', user);
-      console.log(response.data); // Assuming the server returns the registered user data
-      // Perform any additional actions after successful registration
-    } catch (error) {
-      console.log(error.response.data); // Log any error response from the server
-    }
-
-  }
   const [user, setuser] = useState({
     email: "",
     password: ""
@@ -34,6 +24,39 @@ const Login = () => {
     }));
   }
 
+  const loginUser = async (e) => {
+    e.preventDefault();
+
+    const { email, password } = user;
+
+    const res = await fetch('http://localhost:5000/user/login', {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email,
+        password
+      })
+    });
+
+    const data = await res.json();
+
+    if (res.status === 400) {
+      window.alert("Login failed");
+      console.log("Login failed");
+      console.log(res.status);
+      console.log(data);
+    } else if (res.status !== 400) {
+      window.alert("Login successful");
+      console.log("Login successful");
+      navigate('/');
+      setIsLoggedIn(true);
+      console.log(res.status);
+      console.log(data);
+    }
+  }
   return (
     <>
     <Navbar/>
@@ -45,7 +68,7 @@ const Login = () => {
             <br /><br />
             <span>Password: <input type="password" name="password" placeholder='Enter password' onChange={handleChange}/></span>
             <br /><br />
-            <input type="submit" name="submit" id="submit" onClick={handleSubmit} />
+            <input type="submit" name="submit" id="submit" onClick={loginUser} />
         </form>
         <br /><br />
         Don't have an account ? <NavLink to='/register'>Register</NavLink>
