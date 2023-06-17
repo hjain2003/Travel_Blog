@@ -10,34 +10,32 @@ import Addpost from './components/AddPost/Addpost';
 import Diary_item_update from './components/Diary_item/Diary_item_update';
 import MyDiarySpace from './components/MyDiarySpace/MyDiarySpace';
 
-
-
 function App() {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  
-
 
   useEffect(() => {
-    if (!isLoggedIn) {
+    const userId = localStorage.getItem('userId');
+    const currentPath = window.location.pathname;
+  
+    if (!userId && currentPath !== '/login' && currentPath !== '/register') {
       navigate('/login');
     }
-  }, [isLoggedIn, navigate]);
+  }, [navigate]);
+  
 
   return (
     <>
-   
       <Routes>
-        <Route path='/' element={<Home isLoggedIn={isLoggedIn}/>} />
+        <Route path='/' element={<Home isLoggedIn={isLoggedIn} />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login setIsLoggedIn={setIsLoggedIn} />} />
         <Route path='/diaries' element={<Diary_space isLoggedIn={isLoggedIn} />} />
-        <Route path='/logout' element={<Logout setIsLoggedIn={setIsLoggedIn}/>} />
-        <Route path='/addpost' element={<Addpost/>}/>
+        <Route path='/logout' element={<Logout setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path='/addpost' element={<Addpost />} />
         <Route path="/editPost/:id" element={<Diary_item_update />} />
-        <Route path = '/myPosts' element={<MyDiarySpace/>}/>
+        <Route path='/myPosts' element={<MyDiarySpace />} />
       </Routes>
-
     </>
   );
 }

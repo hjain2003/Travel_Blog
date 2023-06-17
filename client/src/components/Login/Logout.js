@@ -24,6 +24,7 @@ const Logout = ({setIsLoggedIn}) => {
           else{
             navigate('/login');
             setIsLoggedIn(false);
+            localStorage.removeItem('userId');
           }
         } catch (err) {
           console.log(err);

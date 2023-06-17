@@ -70,7 +70,7 @@ const Register = () => {
           <br /><br />
           <input type="submit" name="submit" id="submit" onClick={PostData} />
         </form>
-        <br /><br />
+        <br />
         Already have an account ? <NavLink to='/login'>Login</NavLink>
       </div>
     </>
