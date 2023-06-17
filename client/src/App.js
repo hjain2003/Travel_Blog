@@ -8,6 +8,7 @@ import Logout from './components/Login/Logout';
 import { useEffect, useState } from 'react';
 import Addpost from './components/AddPost/Addpost';
 import Diary_item_update from './components/Diary_item/Diary_item_update';
+import MyDiarySpace from './components/MyDiarySpace/MyDiarySpace';
 
 
 
@@ -34,6 +35,7 @@ function App() {
         <Route path='/logout' element={<Logout setIsLoggedIn={setIsLoggedIn}/>} />
         <Route path='/addpost' element={<Addpost/>}/>
         <Route path="/editPost/:id" element={<Diary_item_update />} />
+        <Route path = '/myPosts' element={<MyDiarySpace/>}/>
       </Routes>
 
     </>

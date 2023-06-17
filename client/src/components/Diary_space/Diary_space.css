@@ -18,15 +18,19 @@
     text-align: center;
   }
 
-  #add_post{
+  .right_bar{
+    position: absolute;
+    right: 30px;
+    padding: 10px;
+  }
+
+  .My_posts{
     background-color: green;
     color: white;
     border: none;
     padding: 10px;
     border-radius: 5px;
     font-size: 20px;
-    position: absolute;
-    right: 30px;
     cursor: pointer;
   }
   #add_post a{

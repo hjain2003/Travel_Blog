@@ -46,7 +46,11 @@ const Diary_space = ({isLoggedIn}) => {
     <>
       <Navbar />
       <br /><br /><br /><br /><br />
-      <button id="add_post"><NavLink to='/addpost'>Add a post</NavLink></button>
+      <div className="right_bar">
+      <button id="add_post" className='My_posts'><NavLink to='/addpost'>Add a post</NavLink></button> &nbsp;&nbsp;&nbsp;
+      <button className='My_posts'><NavLink to ='/myPosts'>My Posts</NavLink> </button>
+        
+      </div>
       <div className="row">
         {isLoading ? <h1>Loading....</h1> :
           <div className="grid-container">
