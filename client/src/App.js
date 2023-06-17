@@ -17,7 +17,10 @@ function App() {
   useEffect(() => {
     const userId = localStorage.getItem('userId');
     const currentPath = window.location.pathname;
-  
+    
+    if(userId){
+      setIsLoggedIn(true);
+    }
     if (!userId && currentPath !== '/login' && currentPath !== '/register') {
       navigate('/login');
     }
